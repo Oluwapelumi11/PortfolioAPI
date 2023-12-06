@@ -17,3 +17,13 @@ class Contact(models.Model):
         return "Faith Contact"
     
 
+class Message(models.Model):
+    name = models.CharField(("Name"), max_length=50)
+    email = models.EmailField(("Email"), max_length=254)
+    title = models.CharField(("Title"), max_length=50)
+    message = models.TextField(("message"))
+
+
+    def __str__(self):
+        return self.name
+    

@@ -1,7 +1,6 @@
 from django.urls import path
-from .api_view import SkillList,CertificateList
+from .api_view import ListSkills
 
 urlpatterns = [
-    path('<int:pk>/', SkillList.as_view()),
-    path('certificates', CertificateList.as_view())
+    path('',ListSkills.as_view())
 ]
