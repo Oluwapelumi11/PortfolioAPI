@@ -26,7 +26,7 @@ load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 
@@ -137,10 +137,11 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_ROOT = "https://sunday-oluwapelumi.s3.amazonaws.com/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 MEDIA_URL = "media/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -177,7 +178,6 @@ AWS_S3_SIGNATURE_NAME ="s3v4"
 AWS_S3_FILE_OVERWRITE =False
 AWS_S3_DEFAULT_ACL =None
 AWS_S3_VERITY = True
-AWS_QUERYSTRING_AUTH = False
 
 
 # Use Amazon S3 for storage for uploaded media files.
