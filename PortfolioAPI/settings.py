@@ -164,4 +164,4 @@ EMAIL_HOST_PASSWORD = 'ES0naWtQgZ2kzX3d'
 
 
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh','127.0.0.1:8000']
