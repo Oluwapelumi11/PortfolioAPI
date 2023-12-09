@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -96,7 +96,7 @@ DATABASES = {
         "USER": os.getenv("DB_USER"),
         "PASSWORD": os.getenv("DB_PASSWORD"),
         "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT"),
+        "PORT": int(os.getenv("DB_PORT")),
     }
 }
 
@@ -140,7 +140,7 @@ STATIC_URL = "static/"
 
 STATICFILES_DIRS = (STATIC_DIR,)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_ROOT = BASE_DIR/"media"
+MEDIA_ROOT = os.path.join(BASE_DIR/"media")
 MEDIA_URL = "media/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -149,18 +149,18 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST = (
-)
-os.environ['Brevo-API-Key'] = "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"
+# CORS_ORIGIN_WHITELIST = (
+# )
+# os.environ['Brevo-API-Key'] = "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"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = 'smtp-relay.brevo.com'
-EMAIL_PORT = 587  # The default port for SMTP is 587, but it could be different
-EMAIL_USE_TLS = True  # Use TLS for secure connections
-EMAIL_HOST_USER = 'oluwapelumiezekiel11@gmail.com'
-EMAIL_HOST_PASSWORD = 'ES0naWtQgZ2kzX3d'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() == 'true'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh','127.0.0.1:8000']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh','127.0.0.1','localhost']
