@@ -80,12 +80,25 @@ WSGI_APPLICATION = "PortfolioAPI.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "URL" : "postgresql://postgres:g21bDdB1B1gDeAbcDb1C6F3Ee*4fA42B@roundhouse.proxy.rlwy.net:58383/railway",
+        "NAME": "railway",
+        "USER" : "postgres",
+        "PASSWORD": "g21bDdB1B1gDeAbcDb1C6F3Ee*4fA42B",
+        "HOST": "roundhouse.proxy.rlwy.net",
+        "PORT" : 58383,
     }
 }
+
+
 
 
 # Password validation
@@ -126,6 +139,8 @@ STATIC_URL = "static/"
 
 STATIC_FILES_DIR =(STATIC_DIR,)
 
+STATICFILES_DIRS = [BASE_DIR/'static',]
+STATIC_ROOT = BASE_DIR/'staticfiles'
 MEDIA_ROOT = BASE_DIR/"media"
 MEDIA_URL = "media/"
 # Default primary key field type
@@ -136,7 +151,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:4200',
 )
 os.environ['Brevo-API-Key'] = "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"
 
@@ -147,3 +161,7 @@ EMAIL_PORT = 587  # The default port for SMTP is 587, but it could be different
 EMAIL_USE_TLS = True  # Use TLS for secure connections
 EMAIL_HOST_USER = 'oluwapelumiezekiel11@gmail.com'
 EMAIL_HOST_PASSWORD = 'ES0naWtQgZ2kzX3d'
+
+
+
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
