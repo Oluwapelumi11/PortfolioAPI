@@ -18,11 +18,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATIC_DIR = os.path.join(BASE_DIR,'static')
 
+load_dotenv()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-1tetafxh7#toet3y(wp8@$(tx3c6k@!s#w+x@#=s0g!mu&w@4x"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -87,7 +88,6 @@ WSGI_APPLICATION = "PortfolioAPI.wsgi.application"
 #         "NAME": BASE_DIR / "db.sqlite3",
 #     }
 # }
-load_dotenv()
 
 DATABASES = {
     "default": {
@@ -139,7 +139,7 @@ STATIC_URL = "static/"
 
 
 STATICFILES_DIRS = (STATIC_DIR,)
-STATIC_ROOT = BASE_DIR/'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = BASE_DIR/"media"
 MEDIA_URL = "media/"
 # Default primary key field type
