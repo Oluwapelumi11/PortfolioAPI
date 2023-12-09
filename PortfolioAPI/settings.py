@@ -137,11 +137,10 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-MEDIA_ROOT = os.path.join(BASE_DIR,"media")
+MEDIA_ROOT = "https://sunday-oluwapelumi.s3.amazonaws.com/"
 MEDIA_URL = "media/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -165,3 +164,33 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh','127.0.0.1','localhost']
+
+
+
+
+
+AWS_ACCESS_KEY_ID = 'AKIAVGDM7JXCW5AWSFOS'
+AWS_SECRET_ACCESS_KEY = 'k3xPM3v/E+Aj91KZ7DQ4Q1eG8uRmeG1tjSQfEsVN'
+AWS_STORAGE_BUCKET_NAME = 'sunday-oluwapelumi'
+AWS_S3_REGION_NAME = 'eu-north-1'  # e.g., us-west-2
+AWS_S3_SIGNATURE_NAME ="s3v4"
+AWS_S3_FILE_OVERWRITE =False
+AWS_S3_DEFAULT_ACL =None
+AWS_S3_VERITY = True
+AWS_QUERYSTRING_AUTH = False
+
+
+# Use Amazon S3 for storage for uploaded media files.
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# # Optional: Set the S3 endpoint URL (for non-AWS S3-compatible services)
+# # AWS_S3_ENDPOINT_URL = 'your-s3-endpoint-url'
+
+# # Optional: Set the S3 bucket subdirectory (if you want to organize files in a subdirectory)
+# # AWS_LOCATION = 'your-subdirectory'
+
+# # Optional: Set cache control headers for S3
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
+ 
