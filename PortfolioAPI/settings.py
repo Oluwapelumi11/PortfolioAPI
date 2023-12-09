@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_DIR = os.path.join(BASE_DIR,'static')
@@ -86,19 +86,18 @@ WSGI_APPLICATION = "PortfolioAPI.wsgi.application"
 #         "NAME": BASE_DIR / "db.sqlite3",
 #     }
 # }
+load_dotenv()
+
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "URL" : "postgresql://postgres:g21bDdB1B1gDeAbcDb1C6F3Ee*4fA42B@roundhouse.proxy.rlwy.net:58383/railway",
-        "NAME": "railway",
-        "USER" : "postgres",
-        "PASSWORD": "g21bDdB1B1gDeAbcDb1C6F3Ee*4fA42B",
-        "HOST": "roundhouse.proxy.rlwy.net",
-        "PORT" : 58383,
+        "ENGINE": os.getenv("DB_ENGINE"),
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DB_HOST"),
+        "PORT": os.getenv("DB_PORT"),
     }
 }
-
-
 
 
 # Password validation
@@ -149,7 +148,7 @@ MEDIA_URL = "media/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
 )
 os.environ['Brevo-API-Key'] = "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"
