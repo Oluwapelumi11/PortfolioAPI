@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from contact.views import CreateMessage
+from qrcreator.views import GenerateQrCode
 
 from django.conf import settings 
 from django.conf.urls.static import static
@@ -26,6 +27,7 @@ urlpatterns = [
     path("api/projects/", include("project.urls")),
     path("api/skills/", include("skills.urls")),
     path("api/contact/",CreateMessage.as_view()),
+    path('api/v1/createqr/<string:url>', GenerateQrCode.as_view(),),
 ] 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
