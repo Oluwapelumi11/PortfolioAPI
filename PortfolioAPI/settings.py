@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "contact",
     "skills",
     "project",
+    "qrcreator"
     "corsheaders",
 ]
 
