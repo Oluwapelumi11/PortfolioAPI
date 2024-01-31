@@ -27,7 +27,7 @@ urlpatterns = [
     path("api/projects/", include("project.urls")),
     path("api/skills/", include("skills.urls")),
     path("api/contact/",CreateMessage.as_view()),
-    path('api/v1/createqr/<str:url>', GenerateQrCode.as_view(),),
+    path('api/v1/createqr/<str:url>', GenerateQrCode.as_view()),
 ] 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
