@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from qrcreator.serializers import QrCodeSerializer, QrCodeSchema
+from qrcreator.serialize import QrCodeSerializer, QrCodeSchema
 import qrcode
 from io import BytesIO
 
